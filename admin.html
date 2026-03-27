@@ -8,46 +8,30 @@
 <body>
     <header>
         <nav>
-            <h1>⚙️ Admin Panel</h1>
-            <a href="index.html" class="home-btn">🏠 View Products</a>
+            <h1>⚙️ Add Product</h1>
+            <a href="index.html" class="home-btn">🏠 View Store</a>
         </nav>
     </header>
     
     <div class="container">
         <form id="productForm">
-            <h2>Add New Product</h2>
+            <h2>➕ New Product</h2>
             
-            <input type="text" id="title" placeholder="Product Title *" required>
-            <textarea id="description" placeholder="Description *" rows="4" required></textarea>
-            <input type="url" id="buyerLink" placeholder="WhatsApp: https://wa.me/1234567890">
-            <input type="text" id="category" placeholder="Category (optional)">
+            <input type="text" id="title" placeholder="📱 Product Title *" required>
+            <textarea id="description" placeholder="✨ Description *" rows="3" required></textarea>
+            <input type="text" id="category" placeholder="👕 Category (Electronics, Clothing...)">
             
-            <input type="file" id="photos" multiple accept="image/*">
-            <button type="submit">➕ Add Product</button>
+            <input type="url" id="imageUrl" placeholder="🖼️ Main Image URL (Imgur direct link)">
+            <small><a href="https://imgur.com/upload" target="_blank">Upload image → Copy direct link</a></small>
+            
+            <input type="url" id="buyerLink" placeholder="🔗 WhatsApp: https://wa.me/1234567890">
+            
+            <textarea id="photosUrl" placeholder="📸 Extra photos (one URL per line)" rows="2"></textarea>
+            
+            <button type="submit" style="background:#48bb78;font-size:1.1rem;">✅ Publish Product</button>
         </form>
     </div>
     
     <script src="script.js"></script>
-    <script>
-        document.getElementById('productForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const product = {
-                id: Date.now(),
-                title: document.getElementById('title').value,
-                description: document.getElementById('description').value,
-                buyerLink: document.getElementById('buyerLink').value,
-                category: document.getElementById('category').value,
-                photos: []
-            };
-            
-            // Save to localStorage
-            let products = JSON.parse(localStorage.getItem('products') || '[]');
-            products.unshift(product);
-            localStorage.setItem('products', JSON.stringify(products));
-            
-            alert('✅ Product Added!');
-            window.location.href = 'index.html';
-        };
-    </script>
 </body>
 </html>
